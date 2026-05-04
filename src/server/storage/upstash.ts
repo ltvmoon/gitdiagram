@@ -1,4 +1,7 @@
-import { readRequiredEnv } from "~/server/storage/config";
+import {
+  assertLiveStorageAllowedForTests,
+  readRequiredEnv,
+} from "~/server/storage/config";
 
 function getBaseUrl() {
   return readRequiredEnv("UPSTASH_REDIS_REST_URL").replace(/\/$/, "");
@@ -12,6 +15,8 @@ function getHeaders(): HeadersInit {
 }
 
 async function execute<T>(path: string, body: unknown): Promise<T> {
+  assertLiveStorageAllowedForTests("Upstash");
+
   const response = await fetch(`${getBaseUrl()}${path}`, {
     method: "POST",
     headers: getHeaders(),

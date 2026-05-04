@@ -7,11 +7,13 @@ import {
   S3Client,
 } from "@aws-sdk/client-s3";
 
-import { readRequiredEnv } from "./config";
+import { assertLiveStorageAllowedForTests, readRequiredEnv } from "./config";
 
 let client: S3Client | null = null;
 
 function getClient(): S3Client {
+  assertLiveStorageAllowedForTests("R2");
+
   if (client) {
     return client;
   }
