@@ -55,8 +55,7 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
           </h1>
           <p className="mt-4 max-w-[34rem] text-lg leading-[1.45] text-pretty text-[hsl(var(--neo-soft-text))] sm:mt-3 sm:text-base sm:leading-normal dark:text-neutral-300">
             Scan the full public diagram catalog by repository name, stars, and
-            generation time. The list defaults to the most recent repositories
-            and stays fast by reading a cached browse index.
+            generation time.
           </p>
         </section>
 
